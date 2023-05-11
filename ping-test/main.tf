@@ -9,9 +9,9 @@ resource "null_resource" "ping_test" {
   provisioner "remote-exec" {
     connection {
       type = "ssh"
-      agent = true
+      # agent = true
       host = "${element(var.instance_ids, count.index)}"
-      user = "root"
+      user = "ec2-user"
       private_key = "${file("ssh_keys/dev_mykey.pem")}"
     }
     inline = [ "ping -c 3 ${element(var.instance_ids, count.index)}" ]

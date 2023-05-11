@@ -48,7 +48,7 @@ resource "aws_instance" "ec2-instance" {
   }
   provisioner "file" {
     source       = "ssh_keys/dev_mykey.pem"
-    destination =  "~/.ssh/dev_mykey.pem"
+    destination =  ".ssh/dev_mykey.pem"
     connection {
       type = "ssh"
       user = "ec2-user"
