@@ -34,3 +34,16 @@ resource "random_string" "admin_passwords" {
     timestamp = timestamp()
   }
 }
+
+resource "random_password" "ec2_passwords" {
+  count            = var.instance_count
+  length = 16
+  special = false
+  min_upper = 1
+  min_lower = 1
+  min_numeric = 1
+}
+
+output "output_password" {
+  value = random_password.ec2_passwords.*.result
+}

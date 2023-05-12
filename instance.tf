@@ -57,7 +57,7 @@ resource "aws_instance" "ec2-instance" {
       timeout = "4m"
     }
   }
-
+}
 #   # provisioner "local-exec" {
 #   #   command     = "ping -c 1 ${aws_instance.ec2-instance[(var.instance_count + 1) % var.instance_count].private_ip} > /dev/null && echo 'Ping successful' >> ping_results.txt || echo 'Ping failed' >> ping_results.txt"
 #   #   #command     = "ping -c 1 ${self.private_ip} >/dev/null 2>&1; if [ $? -eq 0 ]; then echo 'Ping from $source_ip to $target_ip: PASS'; else echo 'Ping from $source_ip to $target_ip: FAIL'; fi"
