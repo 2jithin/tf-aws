@@ -6,6 +6,13 @@ resource "null_resource" "ping_test" {
     instance_id = var.instance_ids[count.index]
   }
 
+  provisioner "file" {
+        
+  }
+  provisioner "local-exec" {
+    command = "echo -n  ${element(var.instance_ids, count.index)} >> output.tf"
+  }
+
   provisioner "remote-exec" {
     connection {
       type = "ssh"

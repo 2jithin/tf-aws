@@ -13,13 +13,13 @@ variable "region" {
 variable "access_key" {
   description = "access key"
   type        = string
-  default     = "AKIATBNIB4Z3SYMM4UUN"
+  default     = "AKIAYKE6FLN5WBHDGDPG"
   sensitive   = true
 }
 
 variable "secret_key" {
   type      = string
-  default   = "kJN+bi22MLC/Wz7WfEqeNqxnY7KP48Ve7wBT+g/1"
+  default   = "bowkHwvgc7uryZOWRO9iPZ2Ffveovt38sTfs0XnM"
   sensitive = true
 
 }

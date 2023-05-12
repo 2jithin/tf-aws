@@ -21,7 +21,6 @@ terraform {
 }
 
 provider "random" {
-
 }
 
 resource "random_string" "admin_passwords" {

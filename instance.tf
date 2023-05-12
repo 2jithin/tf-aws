@@ -58,13 +58,13 @@ resource "aws_instance" "ec2-instance" {
     }
   }
 
-  # provisioner "local-exec" {
-  #   command     = "ping -c 1 ${aws_instance.ec2-instance[(var.instance_count + 1) % var.instance_count].private_ip} > /dev/null && echo 'Ping successful' >> ping_results.txt || echo 'Ping failed' >> ping_results.txt"
-  #   #command     = "ping -c 1 ${self.private_ip} >/dev/null 2>&1; if [ $? -eq 0 ]; then echo 'Ping from $source_ip to $target_ip: PASS'; else echo 'Ping from $source_ip to $target_ip: FAIL'; fi"
-  #   when        = create
-  #   interpreter = ["/bin/bash", "-c"]
-  #   on_failure  = continue
-  # }
+#   # provisioner "local-exec" {
+#   #   command     = "ping -c 1 ${aws_instance.ec2-instance[(var.instance_count + 1) % var.instance_count].private_ip} > /dev/null && echo 'Ping successful' >> ping_results.txt || echo 'Ping failed' >> ping_results.txt"
+#   #   #command     = "ping -c 1 ${self.private_ip} >/dev/null 2>&1; if [ $? -eq 0 ]; then echo 'Ping from $source_ip to $target_ip: PASS'; else echo 'Ping from $source_ip to $target_ip: FAIL'; fi"
+#   #   when        = create
+#   #   interpreter = ["/bin/bash", "-c"]
+#   #   on_failure  = continue
+#   # }
 
   #   provisioner "remote-exec" {
   #     inline = [
@@ -72,12 +72,32 @@ resource "aws_instance" "ec2-instance" {
   #     ]
   #     on_failure  = continue
   # }
+# }
+
+# Your existing configuration for creating instances
+
+locals {
+  public_ips = [for instance in aws_instance.ec2-instance : instance.public_ip]
+}
+
+resource "null_resource" "ping_test" {
+  depends_on = [aws_instance.ec2-instance]
+
+  provisioner "remote-exec" {
+    command = <<EOT
+      ips=(${join(" ", local.public_ips)})
+      for ((i=0; i<${length(local.public_ips)}; i++)); do
+        ip1_index=$i
+        ip2_index=$(( (i + 1) % ${length(local.public_ips)} ))
+        ip1=${ips[ip1_index]}
+        ip2=${ips[ip2_index]}
+        echo "Running ping test between $ip1 and $ip2"
+        ping -c 3 $ip1 && ping -c 3 $ip2 && echo "Ping test: Pass" || echo "Ping test: Fail"
+      done
+EOT
+  }
+
 }
 
 
-data "aws_instance" "ec2" {
-  count = var.instance_count
-  depends_on  = [aws_instance.ec2-instance]
-  instance_id = "${element(aws_instance.ec2-instance.*.id,count.index)}"
-  #instance_id = "${element(aws_instance.ec2-instance.*.id,count.index)}${count.index + 1}"
-}
+
