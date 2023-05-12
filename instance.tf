@@ -84,17 +84,7 @@ resource "null_resource" "ping_test" {
   depends_on = [aws_instance.ec2-instance]
 
   provisioner "remote-exec" {
-    command = <<EOT
-      ips=(${join(" ", local.public_ips)})
-      for ((i=0; i<${length(local.public_ips)}; i++)); do
-        ip1_index=$i
-        ip2_index=$(( (i + 1) % ${length(local.public_ips)} ))
-        ip1=${ips[ip1_index]}
-        ip2=${ips[ip2_index]}
-        echo "Running ping test between $ip1 and $ip2"
-        ping -c 3 $ip1 && ping -c 3 $ip2 && echo "Ping test: Pass" || echo "Ping test: Fail"
-      done
-EOT
+    inlinline = [ "ips=(${join(" ", local.public_ips)}); for ((i=0; i<${length(local.public_ips)}; i++)); do ip1=${ips[i]}; ip2=${ips[((i + 1) % "${length(local.public_ips)}")]}; echo 'Running ping test between $ip1 and $ip2'; ping -c 3 $ip1 && ping -c 3 $ip2 && echo 'Ping test: Pass' || echo 'Ping test: Fail'; done" ] 
   }
 
 }
