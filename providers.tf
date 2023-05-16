@@ -23,6 +23,21 @@ terraform {
 provider "random" {
 }
 
+provider "tls" {}
+
+resource "tls_private_key" "t" {
+  algorithm = "RSA"
+}
+provider "local" {}
+
+resource "local_file" "key" {
+  content  = tls_private_key.t.private_key_pem
+  filename = "id_rsa"
+  provisioner "local-exec" {
+    command = "chmod 600 id_rsa"
+  }
+}
+
 resource "random_string" "admin_passwords" {
   count            = var.instance_count
   length           = 16
@@ -43,3 +58,5 @@ resource "random_password" "ec2_passwords" {
   min_lower   = 1
   min_numeric = 1
 }
+
+
