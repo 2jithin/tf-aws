@@ -14307,3 +14307,20 @@ X-Amzn-Requestid: c374c26e-eb27-4f0c-bef4-c5c7ca57f8b0
 2023-05-16T14:40:54.525+0530 [TRACE] vertex "provider[\"registry.terraform.io/hashicorp/null\"] (close)": visit complete
 2023-05-16T14:40:54.526+0530 [TRACE] vertex "root": starting visit (*terraform.nodeCloseModule)
 2023-05-16T14:40:54.526+0530 [TRACE] vertex "root": visit complete
+2023-05-16T15:36:13.318+0530 [INFO]  Terraform version: 1.3.3
+2023-05-16T15:36:13.319+0530 [DEBUG] using github.com/hashicorp/go-tfe v1.9.0
+2023-05-16T15:36:13.319+0530 [DEBUG] using github.com/hashicorp/hcl/v2 v2.14.1
+2023-05-16T15:36:13.319+0530 [DEBUG] using github.com/hashicorp/terraform-config-inspect v0.0.0-20210209133302-4fd17a0faac2
+2023-05-16T15:36:13.319+0530 [DEBUG] using github.com/hashicorp/terraform-svchost v0.0.0-20200729002733-f050f53b9734
+2023-05-16T15:36:13.319+0530 [DEBUG] using github.com/zclconf/go-cty v1.11.1
+2023-05-16T15:36:13.319+0530 [INFO]  Go runtime version: go1.19.1
+2023-05-16T15:36:13.319+0530 [INFO]  CLI args: []string{"C:\\terraform\\terraform.exe", "validate"}
+2023-05-16T15:36:13.320+0530 [TRACE] Stdout is a terminal of width 157
+2023-05-16T15:36:13.320+0530 [TRACE] Stderr is a terminal of width 157
+2023-05-16T15:36:13.320+0530 [TRACE] Stdin is a terminal
+2023-05-16T15:36:13.326+0530 [DEBUG] Attempting to open CLI config file: C:\Users\ICZ1KOR\AppData\Roaming\terraform.rc
+2023-05-16T15:36:13.328+0530 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2023-05-16T15:36:13.335+0530 [DEBUG] ignoring non-existing provider search directory terraform.d/plugins
+2023-05-16T15:36:13.335+0530 [DEBUG] ignoring non-existing provider search directory C:\Users\ICZ1KOR\AppData\Roaming\terraform.d\plugins
+2023-05-16T15:36:13.339+0530 [DEBUG] ignoring non-existing provider search directory C:\Users\ICZ1KOR\AppData\Roaming\HashiCorp\Terraform\plugins
+2023-05-16T15:36:13.339+0530 [INFO]  CLI command args: []string{"validate"}
