@@ -25,5 +25,4 @@ output "ping_results" {
 
 output "ec2_admin_passwords" {
   value = random_string.admin_passwords[*].result
-  sensitive = true
 }
