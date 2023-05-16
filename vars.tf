@@ -28,6 +28,10 @@ variable "path_to_public_key" {
   default = "ssh_keys/dev_mykey.pub"
 }
 
+variable "path_to_private_key" {
+  default = "ssh_keys/dev_mykey.pem"
+}
+
 variable "get_password_data" {
   description = "If true, wait for password data to become available and retrieve it"
   type        = bool

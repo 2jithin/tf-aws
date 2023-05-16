@@ -4,14 +4,15 @@ resource "null_resource" "ping_test" {
 
   triggers = {
     instance_id = var.instance_ids[count.index]
+    exec        = uuid() // everytime gets changed
   }
 
-  provisioner "file" {
+  # provisioner "file" {
         
-  }
-  provisioner "local-exec" {
-    command = "echo -n  ${element(var.instance_ids, count.index)} >> output.tf"
-  }
+  # }
+  # provisioner "local-exec" {
+  #   command = "echo -n  ${element(var.instance_ids, count.index)} >> output.tf"
+  # }
 
   provisioner "remote-exec" {
     connection {
@@ -19,8 +20,8 @@ resource "null_resource" "ping_test" {
       # agent = true
       host = "${element(var.instance_ids, count.index)}"
       user = "ec2-user"
-      private_key = "${file("ssh_keys/dev_mykey.pem")}"
+      private_key = file(var.path_to_private_key)  //ssh_keys/dev_mykey.pem
     }
-    inline = [ "ping -c 3 ${element(var.instance_ids, count.index)}" ]
+    inline = [ "ping -c 3 ${element(var.private_ip, count.index+1) % var.instance_count}" ]
   }
 }

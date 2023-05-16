@@ -58,35 +58,9 @@ resource "aws_instance" "ec2-instance" {
     }
   }
 }
-#   # provisioner "local-exec" {
-#   #   command     = "ping -c 1 ${aws_instance.ec2-instance[(var.instance_count + 1) % var.instance_count].private_ip} > /dev/null && echo 'Ping successful' >> ping_results.txt || echo 'Ping failed' >> ping_results.txt"
-#   #   #command     = "ping -c 1 ${self.private_ip} >/dev/null 2>&1; if [ $? -eq 0 ]; then echo 'Ping from $source_ip to $target_ip: PASS'; else echo 'Ping from $source_ip to $target_ip: FAIL'; fi"
-#   #   when        = create
-#   #   interpreter = ["/bin/bash", "-c"]
-#   #   on_failure  = continue
-#   # }
-
-  #   provisioner "remote-exec" {
-  #     inline = [
-  #       "ping -c 1 ${element(self.private_ip, (count.index + 1) % var.instance_count)} > /dev/null && echo 'Ping successful' || echo 'Ping failed'"
-  #     ]
-  #     on_failure  = continue
-  # }
-# }
-
-# Your existing configuration for creating instances
 
 locals {
   public_ips = [for instance in aws_instance.ec2-instance : instance.public_ip]
-}
-
-resource "null_resource" "ping_test" {
-  depends_on = [aws_instance.ec2-instance]
-
-  provisioner "remote-exec" {
-    inlinline = [ "ips=(${join(" ", local.public_ips)}); for ((i=0; i<${length(local.public_ips)}; i++)); do ip1=${ips[i]}; ip2=${ips[((i + 1) % "${length(local.public_ips)}")]}; echo 'Running ping test between $ip1 and $ip2'; ping -c 3 $ip1 && ping -c 3 $ip2 && echo 'Ping test: Pass' || echo 'Ping test: Fail'; done" ] 
-  }
-
 }
 
 
