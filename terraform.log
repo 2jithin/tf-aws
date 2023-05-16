@@ -16928,3 +16928,38 @@ X-Amzn-Requestid: c374c26e-eb27-4f0c-bef4-c5c7ca57f8b0
 2023-05-16T16:03:21.570+0530 [TRACE] terraform fmt: Formatting subnets.tf
 2023-05-16T16:03:21.570+0530 [TRACE] terraform fmt: Formatting vars.tf
 2023-05-16T16:03:21.572+0530 [TRACE] terraform fmt: Formatting vpc.tf
+2023-05-16T16:44:29.761+0530 [INFO]  Terraform version: 1.4.6
+2023-05-16T16:44:29.763+0530 [DEBUG] using github.com/hashicorp/go-tfe v1.21.0
+2023-05-16T16:44:29.763+0530 [DEBUG] using github.com/hashicorp/hcl/v2 v2.16.2
+2023-05-16T16:44:29.763+0530 [DEBUG] using github.com/hashicorp/terraform-config-inspect v0.0.0-20210209133302-4fd17a0faac2
+2023-05-16T16:44:29.763+0530 [DEBUG] using github.com/hashicorp/terraform-svchost v0.1.0
+2023-05-16T16:44:29.763+0530 [DEBUG] using github.com/zclconf/go-cty v1.12.1
+2023-05-16T16:44:29.763+0530 [INFO]  Go runtime version: go1.19.6
+2023-05-16T16:44:29.763+0530 [INFO]  CLI args: []string{"C:\\terraform\\terraform.exe", "fmt"}
+2023-05-16T16:44:29.764+0530 [TRACE] Stdout is a terminal of width 163
+2023-05-16T16:44:29.764+0530 [TRACE] Stderr is a terminal of width 163
+2023-05-16T16:44:29.764+0530 [TRACE] Stdin is a terminal
+2023-05-16T16:44:29.772+0530 [DEBUG] Attempting to open CLI config file: C:\Users\ICZ1KOR\AppData\Roaming\terraform.rc
+2023-05-16T16:44:29.775+0530 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2023-05-16T16:44:29.783+0530 [DEBUG] ignoring non-existing provider search directory terraform.d/plugins
+2023-05-16T16:44:29.784+0530 [DEBUG] ignoring non-existing provider search directory C:\Users\ICZ1KOR\AppData\Roaming\terraform.d\plugins
+2023-05-16T16:44:29.788+0530 [DEBUG] ignoring non-existing provider search directory C:\Users\ICZ1KOR\AppData\Roaming\HashiCorp\Terraform\plugins
+2023-05-16T16:44:29.788+0530 [INFO]  CLI command args: []string{"fmt"}
+2023-05-16T16:44:29.788+0530 [TRACE] terraform fmt: looking for files in .
+2023-05-16T16:44:29.792+0530 [TRACE] terraform fmt: Formatting backend.tf
+2023-05-16T16:44:29.797+0530 [TRACE] terraform fmt: Formatting data.tf
+2023-05-16T16:44:29.798+0530 [TRACE] terraform fmt: Formatting default_nsg.tf
+2023-05-16T16:44:29.799+0530 [TRACE] terraform fmt: Formatting dev.auto.tfvars
+2023-05-16T16:44:29.799+0530 [TRACE] terraform fmt: Formatting dev.tfvars
+2023-05-16T16:44:29.800+0530 [TRACE] terraform fmt: Formatting instance.tf
+2023-05-16T16:44:29.802+0530 [TRACE] terraform fmt: Formatting internetgateway.tf
+2023-05-16T16:44:29.803+0530 [TRACE] terraform fmt: Formatting key.tf
+2023-05-16T16:44:29.804+0530 [TRACE] terraform fmt: Formatting locals.tf
+2023-05-16T16:44:29.805+0530 [TRACE] terraform fmt: Formatting nat.tf
+2023-05-16T16:44:29.805+0530 [TRACE] terraform fmt: Formatting output.tf
+2023-05-16T16:44:29.806+0530 [TRACE] terraform fmt: Formatting ping-test.tf
+2023-05-16T16:44:29.806+0530 [TRACE] terraform fmt: Formatting providers.tf
+2023-05-16T16:44:29.808+0530 [TRACE] terraform fmt: Formatting securitygroup.tf
+2023-05-16T16:44:29.809+0530 [TRACE] terraform fmt: Formatting subnets.tf
+2023-05-16T16:44:29.810+0530 [TRACE] terraform fmt: Formatting vars.tf
+2023-05-16T16:44:29.812+0530 [TRACE] terraform fmt: Formatting vpc.tf

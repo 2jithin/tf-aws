@@ -46,21 +46,17 @@ resource "aws_instance" "ec2-instance" {
     Terraform   = "true"
     Environment = var.stage
   }
-  provisioner "file" {
-    source      = "ssh_keys/dev_mykey.pem"
-    destination = ".ssh/dev_mykey.pem"
-    connection {
-      type        = "ssh"
-      user        = "ec2-user"
-      private_key = file("ssh_keys/dev_mykey.pem")
-      host        = self.public_ip
-      timeout     = "4m"
-    }
-  }
-}
-
-locals {
-  public_ips = [for instance in aws_instance.ec2-instance : instance.public_ip]
+  # provisioner "file" {
+  #   source      = "ssh_keys/dev_mykey.pem"
+  #   destination = ".ssh/dev_mykey.pem"
+  #   connection {
+  #     type        = "ssh"
+  #     user        = "ec2-user"
+  #     private_key = file("ssh_keys/dev_mykey.pem")
+  #     host        = self.public_ip
+  #     timeout     = "4m"
+  #   }
+  # }
 }
 
 

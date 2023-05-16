@@ -5,3 +5,7 @@ locals {
   timestamp           = timestamp()
   timestamp_sanitized = replace("${local.timestamp}", "/[-| |T|Z|:]/", "")
 }
+
+locals {
+  public_ips = [for instance in aws_instance.ec2-instance : instance.public_ip]
+}
