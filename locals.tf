@@ -4,5 +4,4 @@ locals {
   environment         = var.stage
   timestamp           = timestamp()
   timestamp_sanitized = replace("${local.timestamp}", "/[-| |T|Z|:]/", "")
-
 }
