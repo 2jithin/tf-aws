@@ -43,7 +43,3 @@ resource "random_password" "ec2_passwords" {
   min_lower = 1
   min_numeric = 1
 }
-
-output "output_password" {
-  value = random_password.ec2_passwords.*.result
-}
