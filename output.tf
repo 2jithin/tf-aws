@@ -23,6 +23,6 @@ output "ping_results" {
 #   content  = join(" ", [for r in aws_instance.ec2-instance : r])
 # }
 
-output "ec2_admin_passwords" {
-  value = random_string.admin_passwords[*].result
-}
+# output "ec2_admin_passwords" {
+#   value = random_string.admin_passwords[*].result
+# }
