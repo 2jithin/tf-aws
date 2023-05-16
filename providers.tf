@@ -13,7 +13,7 @@ terraform {
       version = ">= 3.0.1"
     }
     aws = {
-      source = "hashicorp/aws"
+      source  = "hashicorp/aws"
       version = ">= 3.66.0"
       #version = "~> 4.0"
     }
@@ -36,10 +36,10 @@ resource "random_string" "admin_passwords" {
 }
 
 resource "random_password" "ec2_passwords" {
-  count            = var.instance_count
-  length = 16
-  special = false
-  min_upper = 1
-  min_lower = 1
+  count       = var.instance_count
+  length      = 16
+  special     = false
+  min_upper   = 1
+  min_lower   = 1
   min_numeric = 1
 }

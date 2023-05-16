@@ -47,14 +47,14 @@ resource "aws_instance" "ec2-instance" {
     Environment = var.stage
   }
   provisioner "file" {
-    source       = "ssh_keys/dev_mykey.pem"
-    destination =  ".ssh/dev_mykey.pem"
+    source      = "ssh_keys/dev_mykey.pem"
+    destination = ".ssh/dev_mykey.pem"
     connection {
-      type = "ssh"
-      user = "ec2-user"
+      type        = "ssh"
+      user        = "ec2-user"
       private_key = file("ssh_keys/dev_mykey.pem")
-      host = self.public_ip
-      timeout = "4m"
+      host        = self.public_ip
+      timeout     = "4m"
     }
   }
 }

@@ -90,7 +90,7 @@ variable "instance_count" {
   type        = number
   default     = 2
   validation {
-    condition = var.instance_count >= 2 && var.instance_count <= 100
+    condition     = var.instance_count >= 2 && var.instance_count <= 100
     error_message = "Number of VMs must be between 2 and 100"
   }
 }
